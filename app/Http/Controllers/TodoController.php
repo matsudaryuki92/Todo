@@ -10,7 +10,9 @@ class TodoController extends Controller
 
     public function index()
     {
-        $todos = Todo::select('id', 'contents')->where('completed', false)->get();
+        $todos = Todo::select('id', 'contents')
+        ->where('completed', false)
+        ->paginate(4);
         return view('todo.index', compact('todos'));
     }
 
@@ -61,7 +63,11 @@ class TodoController extends Controller
         $todo->completed = true;
         $todo->save();
 
-        return redirect()->route('todos.index');
+        return redirect()
+        ->route('todos.index')
+        ->with(
+            ['message' => 'タスクを完了しました'],
+        );
     }
 
     public function deleted()
@@ -72,7 +78,31 @@ class TodoController extends Controller
 
     public function destroy(string $id)
     {
-        $todo = Todo::findOrFail($id)->delete();
-        return redirect()->route('todos.index');
+        Todo::findOrFail($id)->delete();
+        return redirect()
+        ->route('todos.index')
+        ->with(
+            ['message' => 'タスクを削除しました'],
+        );
+    }
+
+    public function forceDelete(string $id)
+    {
+        Todo::onlyTrashed()->findOrFail($id)->forceDelete();
+        return redirect()
+        ->route('todos.deleted')
+        ->with(
+            ['message' => 'タスクを完全に削除しました'],
+        );
+    }
+
+    public function restore(string $id)
+    {
+        Todo::onlyTrashed()->findOrFail($id)->restore();
+        return redirect()
+        ->route('todos.index')
+        ->with(
+            ['message' => 'タスクを復元しました'],
+        );
     }
 }

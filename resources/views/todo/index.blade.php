@@ -40,6 +40,8 @@
             </div>
             @endforeach
         </div>
+        <!-- ページネーションを実装 -->
+        {{ $todos->links() }}
     </section>
 </body>
 
