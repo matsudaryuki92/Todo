@@ -54,11 +54,12 @@ class TodoController extends Controller
 
     public function completed()
     {
-        $doneTodos = Todo::where('completed', true)->get();
+        $doneTodos = Todo::where('completed', true)
+        ->paginate(4);;
         return view('todo.completed', compact('doneTodos'));
     }
 
-    public function taskComplete(Todo $todo)
+    public function complete(Todo $todo)
     {
         $todo->completed = true;
         $todo->save();
@@ -72,7 +73,8 @@ class TodoController extends Controller
 
     public function deleted()
     {
-        $deletedTodos = Todo::onlyTrashed()->get();
+        $deletedTodos = Todo::onlyTrashed()
+        ->paginate(4);;
         return view('todo.deleted', compact('deletedTodos'));
     }
 

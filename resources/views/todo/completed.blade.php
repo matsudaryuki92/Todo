@@ -7,5 +7,6 @@
         <span class="text-gray-700 px-4 py-2">{{ $todo->id }} : {{ $todo->contents }}</span>
     </div>
     @endforeach
+    {{ $doneTodos->links() }}
 </div>
 @endsection
