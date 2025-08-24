@@ -39,9 +39,8 @@
                 </div>
             </div>
             @endforeach
+            {{ $todos->links() }}
         </div>
-        <!-- ページネーションを実装 -->
-        {{ $todos->links() }}
     </section>
 </body>
 
