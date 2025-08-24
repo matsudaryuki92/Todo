@@ -34,7 +34,57 @@ class TodoSeeder extends Seeder
             'contents' => '掃除をする！',
             'completed' => false,
             'created_at' => now(),
-        ]
+        ],
+            [
+                'contents' => '料理をする！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => '勉強をする！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => 'トイレットペーパーを買いに行く！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => '洗濯をする！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => '掃除をする！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => '料理をする！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => '勉強をする！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => 'トイレットペーパーを買いに行く！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => '洗濯をする！',
+                'completed' => false,
+                'created_at' => now(),
+            ],
+            [
+                'contents' => '掃除をする！',
+                'completed' => false,
+                'created_at' => now(),
+            ]
     ]);
     }
 }
