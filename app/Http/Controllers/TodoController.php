@@ -4,28 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Todo;
+use App\Models\Category;
+use App\Http\Requests\StoreTodoRequest;
+use App\Http\Requests\UpdateTodoRequest;
+use App\UseCases\Todo\IndexAction;
+use App\UseCases\Todo\StoreAction;
+use App\UseCases\Todo\UpdateAction;
 
 class TodoController extends Controller
 {
 
-    public function index()
+    public function index(IndexAction $action)
     {
-        $todos = Todo::select('id', 'contents')
-        ->where('completed', false)
-        ->paginate(4);
-        return view('todo.index', compact('todos'));
+        $data = $action();
+
+        return view('todo.index', $data);
     }
 
-    public function store(Todo $todo, Request $request)
+    public function store(Todo $todo, StoreTodoRequest $request, StoreAction $action)
     {
-        $request->validate([
-            'contents' => 'required|max:255',
-        ]);
-
-        $todo->contents = $request->contents;
-        $todo->completed = false;
-        $todo->created_at = now();
-        $todo->save();
+        $action($todo, $request);
 
         return redirect()
         ->route('todos.index')
@@ -38,16 +36,9 @@ class TodoController extends Controller
         return view('todo.edit', compact('todo'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateAction $action, UpdateTodoRequest $request, string $id)
     {
-        $request->validate([
-            'contents' => 'required|max:255',
-        ]);
-
-        $todo = Todo::findOrFail($id);
-        $todo->contents = $request->input('contents');
-        $todo->completed = false;
-        $todo->save();
+        $action($request, $id);
 
         return redirect()->route('todos.index');
     }

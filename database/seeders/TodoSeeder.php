@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Todo;
 use Illuminate\Support\Facades\DB;
 
 class TodoSeeder extends Seeder
@@ -15,76 +13,18 @@ class TodoSeeder extends Seeder
     public function run(): void
     {
         DB::table('todos')->insert([[
-            'contents' => '料理をする！',
+            'category_id' => 1,
+            'contents' => '年末調整をする！',
             'completed' => false,
-            'created_at' => now(),
-        ],[
-            'contents' => '勉強をする！',
-            'completed' => false,
-            'created_at' => now(),
-        ],[
-            'contents' => 'トイレットペーパーを買いに行く！',
-            'completed' => false,
-            'created_at' => now(),
-        ],[
-            'contents' => '洗濯をする！',
-            'completed' => false,
-            'created_at' => now(),
-        ],[
-            'contents' => '掃除をする！',
-            'completed' => false,
+            'deadline' => now()->tomorrow(),
             'created_at' => now(),
         ],
-            [
-                'contents' => '料理をする！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => '勉強をする！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => 'トイレットペーパーを買いに行く！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => '洗濯をする！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => '掃除をする！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => '料理をする！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => '勉強をする！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => 'トイレットペーパーを買いに行く！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => '洗濯をする！',
-                'completed' => false,
-                'created_at' => now(),
-            ],
-            [
-                'contents' => '掃除をする！',
-                'completed' => false,
-                'created_at' => now(),
-            ]
-    ]);
+        [
+            'category_id' => 2,
+            'contents' => 'システム設計をする！',
+            'completed' => false,
+            'deadline' => now()->tomorrow(),
+            'created_at' => now(),
+        ]]);
     }
 }

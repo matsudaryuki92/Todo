@@ -14,11 +14,11 @@
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center bg-orange-400">
             <a href="{{ route('todos.index') }}" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                 <img class="w-12 h-12 text-white p-2" src="{{ asset('images/todo.avif') }}" alt="todo">
-                <span class="ml-3 text-white text-2xl md:text-3xl font-bold">Todo</span>
+                <span class="ml-3 text-white text-2xl md:text-3xl font-bold">タスク管理</span>
             </a>
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                <button onClick='location.href="{{ route('todos.completed') }}"' class="text-white mr-5 hover:text-gray-900">完了一覧</button>
-                <button onClick='location.href="{{ route('todos.deleted') }}"' class="text-white mr-5 hover:text-gray-900">削除一覧</button>
+                <button onClick='location.href="{{ route('todos.completed') }}"' class="text-white mr-5 hover:text-blue-400">完了一覧</button>
+                <button onClick='location.href="{{ route('todos.deleted') }}"' class="text-white mr-5 hover:text-red-400">削除一覧</button>
             </nav>
         </div>
     </header>

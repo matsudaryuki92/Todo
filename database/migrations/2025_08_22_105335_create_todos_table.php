@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
-            $table->string('contents');
-            $table->boolean('completed')->default(false);
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->string('contents')->comment('タスク内容');
+            $table->boolean('completed')->default(false)->comment('完了/未完了フラグ');
+            $table->dateTime('deadline')->nullable()->comment('締め切り日時');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -14,9 +14,22 @@ class Todo extends Model
      *
      * @var list<string>
      */
+
+    //castsを使うことでstring->Carbonの型に変換することが出来る
+    protected $casts = [
+        'deadline' => 'datetime',
+    ];
+
     protected $fillable = [
+        'category_id',
         'contents',
         'completed',
-        'created_at',
+        'deadline',
+        'created_at'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
