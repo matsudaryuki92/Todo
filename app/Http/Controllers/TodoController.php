@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Todo;
-use App\Models\Category;
 use App\Http\Requests\StoreTodoRequest;
 use App\Http\Requests\UpdateTodoRequest;
 use App\UseCases\Todo\IndexAction;
@@ -17,7 +15,6 @@ class TodoController extends Controller
     public function index(IndexAction $action)
     {
         $data = $action();
-
         return view('todo.index', $data);
     }
 
@@ -39,7 +36,6 @@ class TodoController extends Controller
     public function update(UpdateAction $action, UpdateTodoRequest $request, string $id)
     {
         $action($request, $id);
-
         return redirect()->route('todos.index');
     }
 

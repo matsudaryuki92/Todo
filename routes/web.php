@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\AuthRegisterController;
+use App\Http\Controllers\AuthLoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 return view('welcome');
 });
+
 
 Route::prefix('todos')->name('todos.')->group(function() {
     Route::get('/completed', [TodoController::class, 'completed'])->name('completed');

@@ -56,8 +56,10 @@
 
                     <!-- 右：カテゴリと締切（視覚的に統一） -->
                     <div class="flex items-center text-gray-600 px-3 py-1 rounded space-x-4">
-                        <span>カテゴリ：「{{ $todo->category->title }}」</span>
-                        <span>締切：{{ $todo->deadline->format('n月j日') }}まで</span>
+                        <div class="{{ $todo->is_overdue ? 'bg-red-200' : '' }}">
+                            <span>カテゴリ：「{{ $todo->category->title }}」</span>
+                            <span>締切：{{ $todo->deadline->format('n月j日') }}まで</span>
+                        </div>
                     </div>
                 </div>
 
